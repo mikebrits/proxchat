@@ -22,7 +22,7 @@ export default class Explore extends Component {
         return (
             <View>
                 <Button
-                    onPress={() => navigate('Place', {placeID : '123'})}
+                    onPress={() => navigate('Place', {placeID : 321})}
                     title="Go to place"
                 />
             </View>

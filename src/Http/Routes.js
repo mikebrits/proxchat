@@ -5,11 +5,34 @@ import ChatOptions from '../Views/ChatOptions';
 import Explore from '../Views/Explore';
 import Settings from '../Views/Settings';
 import Place from '../Views/Place';
+import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react';
 
 export const Tabs = TabNavigator({
-    Chats: { screen: Chats },
-    Explore: { screen: Explore },
-    Settings: { screen: Settings },
+    Chats: {
+        screen: Chats,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-chatbubbles-outline" size={25} color={tintColor} />
+            ),
+        }
+    },
+    Explore: {
+        screen: Explore,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-compass-outline" size={25} color={tintColor}  />
+            ),
+        }
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-finger-print-outline" size={25} color={tintColor}  />
+            ),
+        }
+    },
 });
 
 export const AppNavigation = StackNavigator({
