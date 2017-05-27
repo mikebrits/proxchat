@@ -22,8 +22,8 @@ export default class Chats extends Component {
         return (
             <View>
                 <Button
-                    onPress={() => navigate('Chat')}
-                    title="Chat with Lucy"
+                    onPress={() => navigate('Chat', {chatID : '123'})}
+                    title="Chat with Person"
                 />
             </View>
         );

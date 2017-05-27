@@ -6,13 +6,21 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    View
+    View,
+    Text
 } from 'react-native';
 
 export default class Chats extends Component {
+
+    static navigationOptions = ({ navigation }) => ({
+        title: `Chat Options`,
+    });
+
     render() {
         return (
-            <View>  </View>
+            <View>
+                <Text>Chat Options</Text>
+            </View>
         );
     }
 }

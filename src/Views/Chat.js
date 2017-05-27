@@ -7,16 +7,23 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    Text,
+    Button
 } from 'react-native';
 
 export default class Chat extends Component {
+
+    static navigationOptions = ({ navigation }) => ({
+        title: `Chat with ${navigation.state.params.chatID}`,
+        headerRight: <Button title="Settings" onPress={() => {navigation.navigate('ChatOptions', {chatID : navigation.state.params.chatID})}} />,
+    });
+
     render() {
 
         return (
             <View>
                 <Text>
-                    Chat with Person
+                    Messages
                 </Text>
             </View>
         );

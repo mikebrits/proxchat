@@ -6,13 +6,18 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    View
+    View,
+    Text
 } from 'react-native';
 
 export default class Chats extends Component {
     render() {
         return (
-            <View>  </View>
+            <View>
+                <Text>
+                    Settings
+                </Text>
+            </View>
         );
     }
 }

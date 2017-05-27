@@ -1,4 +1,4 @@
-Chats.js/**
+/**
  *
  * @flow
  */
@@ -6,16 +6,28 @@ Chats.js/**
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    View
+    View,
+    Text,
+    Button
 } from 'react-native';
 
 export default class Explore extends Component {
+
+    static navigationOptions = {
+        title: 'Explore'
+    };
+
     render() {
+        const { navigate } = this.props.navigation;
         return (
-            <View>  </View>
+            <View>
+                <Button
+                    onPress={() => navigate('Place', {placeID : '123'})}
+                    title="Go to place"
+                />
+            </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-});
+const styles = StyleSheet.create({});
