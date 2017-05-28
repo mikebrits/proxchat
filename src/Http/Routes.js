@@ -9,19 +9,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 
 export const Tabs = TabNavigator({
-    Chats: {
-        screen: Chats,
-        navigationOptions : {
-            tabBarIcon: ({ tintColor }) => (
-                <Icon name="ios-chatbubbles-outline" size={25} color={tintColor} />
-            ),
-        }
-    },
     Explore: {
         screen: Explore,
         navigationOptions : {
             tabBarIcon: ({ tintColor }) => (
                 <Icon name="ios-compass-outline" size={25} color={tintColor}  />
+            ),
+        }
+    },
+    Chats: {
+        screen: Chats,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-chatbubbles-outline" size={25} color={tintColor} />
             ),
         }
     },
