@@ -72,6 +72,10 @@ const styles = StyleSheet.create({
         width : '100%'
     },
     container : {
+        padding : 5,
+        backgroundColor : 'white',
+        borderTopWidth : 1,
+        borderTopColor : '#DDDDDD',
         flexDirection : 'row',
         alignItems : 'center'
     },

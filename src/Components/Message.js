@@ -19,7 +19,6 @@ class Message extends Component{
         this.state = {
             opacity : new Animated.Value(0),
             bottomOffset : new Animated.Value(-50),
-
         }
 
         Animated.timing(

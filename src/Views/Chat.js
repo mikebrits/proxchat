@@ -22,6 +22,8 @@ import Message from '../Components/Message';
 import MessageInput from '../Components/MessageContentInput';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Ionicons';
+import InvertibleScrollView from 'react-native-invertible-scroll-view';
+
 
 
 export default class Chat extends Component {
@@ -46,6 +48,26 @@ export default class Chat extends Component {
             },
             contents: {
                 text: "My Message Text that is a lot longer and hopefully goes onto the next line ",
+            },
+            timestamp: '1234'
+        },
+        {
+            author: {
+                id: 122,
+                name: "Mike C"
+            },
+            contents: {
+                text: "Echo park keytar trust fund drinking vinegar man braid pork belly, crucifix fap etsy craft beer gentrify farm-to-table. Lomo tilde man bun blog williamsburg pinterest. Kitsch ethical tumblr lyft, pour-over locavore pop-up. Hexagon cray pug, meggings health goth williamsburg raclette gochujang tbh. Jean shorts cred freegan YOLO. Bicycle rights small batch tumeric, art party roof party gochujang asymmetrical distillery humblebrag neutra fam. YOLO hammock glossier, celiac chartreuse photo booth cliche thundercats hexagon polaroid chicharrones gentrify.",
+            },
+            timestamp: '1235'
+        },
+        {
+            author: {
+                id: 111,
+                name: "Mike B"
+            },
+            contents: {
+                text: `Tumblr fam twee mustache, blue bottle typewriter four loko gluten-free chicharrones lomo. Photo booth bespoke squid typewriter, cloud bread distillery jianbing swag skateboard dreamcatcher cred lomo quinoa. Kickstarter asymmetrical listicle keytar, wayfarers semiotics intelligentsia cred poutine neutra brunch butcher try-hard. Yuccie affogato pabst, cornhole lo-fi poke leggings. Typewriter ethical knausgaard before they sold out gochujang, lumbersexual polaroid vice. Whatever small batch taxidermy meditation health goth, authentic PBR&B raw denim twee pabst art party copper mug adaptogen bitters YOLO. Master cleanse tofu put a bird on it, portland XOXO meditation lomo gluten-free jianbing brunch shaman keffiyeh intelligentsia pug godard.                Blue bottle pitchfork yr, pickled tacos live-edge asymmetrical heirloom dreamcatcher tousled food truck. Hashtag farm-to-table hell of, authentic beard wolf banh mi fixie kitsch XOXO chambray pinterest freegan street art. Organic copper mug photo booth locavore freegan. Vaporware pinterest kombucha bushwick four dollar toast. Tattooed kickstarter 8-bit butcher humblebrag vinyl. Subway tile hexagon before they sold out gastropub chillwave offal, pug selfies craft beer neutra food truck put a bird on it meggings. Hoodie celiac tattooed yr.`,
             },
             timestamp: '1234'
         },
@@ -104,7 +126,7 @@ export default class Chat extends Component {
             timestamp: '1234566'
         };
 
-        this.messages.push(message);
+        this.messages.unshift(message);
 
         this.setState({messages: this.messages, messageContents: {}})
     };
@@ -121,7 +143,7 @@ export default class Chat extends Component {
         return (
             <Animated.View style={[styles.container, {paddingBottom : this.state.keyboardOffset}]}>
                 <ListView
-                    style={styles.messageList}
+                    renderScrollComponent={() => <InvertibleScrollView style={styles.messageList} inverted />}
                     dataSource={messages}
                     renderRow={(message) => <Message {...message} userIsAuthor={message.author.id === user.id} />}
                 />
@@ -140,11 +162,12 @@ export default class Chat extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 5,
-        alignContent: 'flex-end',
-        minHeight: '100%',
+        //padding: 5,
+        //alignContent: 'flex-end',
+        height: Dimensions.get('window').height - 60
     },
     messageList: {
-        flexDirection: 'column-reverse',
+        padding : 5,
+        paddingBottom : 20
     },
 });
