@@ -45,7 +45,9 @@ class Message extends Component{
     render(){
         const props = this.props;
         return (
-            <Animated.View style={
+            <Animated.View
+                onLayout={event => {console.log(event.nativeEvent.layout)}}
+                style={
                 [
                     styles.container,
                     props.userIsAuthor && styles.userIsAuthor,

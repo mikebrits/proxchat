@@ -27,8 +27,8 @@ const MessageContentInput = (props) =>{
                     placeholder={props.placeholder || 'Send a message'}
                     onChangeText={(text) => props.onChangeText(text)}
                     value={props.textValue}
-                    returnKeyType="send"
-                    onSubmitEditing={() => props.canSendMessage && props.onSendMessage()}
+                    //returnKeyType="send"
+                    //onSubmitEditing={() => props.canSendMessage && props.onSendMessage()}
                 />
                 <TouchableOpacity onPress={() => props.canSendImage && console.log('Camera')}
                                   style={styles.cameraButton}
