@@ -9,7 +9,8 @@ import {
     View,
     TextInput,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    Platform
 
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
         borderTopWidth : 1,
         borderTopColor : '#DDDDDD',
         flexDirection : 'row',
-        alignItems : 'center'
+        alignItems : 'center',
+        paddingBottom : Platform.OS == 'android' ? 25 : 5
     },
     cameraButton : {
         //backgroundColor : 'white'
