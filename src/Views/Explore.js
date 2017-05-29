@@ -130,7 +130,6 @@ export default class Explore extends Component {
     scrollToPlace(place){
         let regPlace = _.find(this.registeredPlaces, {id : place.id})
         this.placesScrollView.scrollTo({y : regPlace.y, animated : false});
-        console.log("Place index", this.places.indexOf(place));
     }
 
     registerPlaceInScrollView(place, layout){
@@ -176,7 +175,7 @@ export default class Explore extends Component {
                             );
                         })
                     }
-                    <View style={{height: 1000}}></View>
+                    {/*<View style={{height: 1000}}></View>*/}
 
                 </ScrollView>
             </View>
