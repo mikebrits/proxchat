@@ -74,16 +74,19 @@ class ExploreMap extends Component {
     }
 
     handleMarkerPressed(place) {
-        if(this.props.onMarkerPress) {
+        if (this.props.onMarkerPress) {
             this.props.onMarkerPress(place)
         }
     }
 
 
     render() {
+
+        const activePlace = this.props.activePlaceID ? _.find(this.props.places, {id: this.props.activePlaceID}) : null;
+        console.log(activePlace);
         if (this.state.myLocation)
             return (
-                
+
                 <MapView
                     style={styles.map}
                     ref={ref => {
@@ -108,27 +111,43 @@ class ExploreMap extends Component {
                         <Icon name="md-person" size={25} color={"#4F93FF"}/>
                     </MapView.Marker>
 
+
                     {_.map(this.props.places, (place, index) => {
                         let isActiveMarker = place.id == this.props.activePlaceID;
                         return (
-                            <MapView.Marker
-                                key={index}
-                                identifier={`${place.id}`}
-                                coordinate={place.location}
-                                title={place.name}
-                                pinColor={isActiveMarker ? "green" : "red"  }
-                                style={styles.marker}
-                                ref={ref => {
-                                    this.markerRefs[place.id] = ref;
-                                }}
-                            >
-                                <TouchableOpacity onPress={() => this.handleMarkerPressed(place)}>
-                                    <Icon name="md-home" size={isActiveMarker ? 35 : 25}
-                                          color={isActiveMarker ? "green" : "red"}/>
-                                </TouchableOpacity>
-                            </MapView.Marker>
+                            <View key={index}>
+                                <MapView.Marker
+
+                                    identifier={`${place.id}`}
+                                    coordinate={place.location}
+                                    title={place.name}
+                                    pinColor={isActiveMarker ? "green" : "red"  }
+                                    style={styles.marker}
+                                    ref={ref => {
+                                        this.markerRefs[place.id] = ref;
+                                    }}
+                                >
+                                    <View>
+                                        <TouchableOpacity onPress={() => this.handleMarkerPressed(place)}>
+                                            <Icon name="md-home" size={isActiveMarker ? 35 : 25}
+                                                  color={isActiveMarker ? "green" : "red"}/>
+                                        </TouchableOpacity>
+                                    </View>
+                                </MapView.Marker>
+                            </View>
                         );
                     })}
+                    {
+                        activePlace &&
+                        <MapView.Circle
+                            key={activePlace.location.latitude + activePlace.location.longitude}
+                            center={activePlace.location}
+                            radius={300}
+                            fillColor={"rgba(5, 165, 209, 0.2)"}
+                            strokeColor={"rgba(5, 165, 209, 0.5)"}
+                            strokeWidth={1}
+                        />
+                    }
                 </MapView>
             );
         return (
@@ -157,11 +176,11 @@ ExploreMap.propTypes = {
         })
     ).isRequired,
     activePlaceID: PropTypes.number,
-    onMarkerPress : PropTypes.func
+    onMarkerPress: PropTypes.func
 }
 
 const styles = StyleSheet.create({
     map: {
-        height: 100
+        height: 200
     },
 });

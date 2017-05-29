@@ -78,11 +78,10 @@ export default class Explore extends Component {
                 longitude: -2.953561
             }
         },
-    ]
+    ];
+
     registeredPlaces = [];
     placesScrollView = null;
-
-    placeHeight = 300;
 
     componentWillMount() {
         this.state = {
@@ -175,7 +174,11 @@ export default class Explore extends Component {
                             );
                         })
                     }
-                    {/*<View style={{height: 1000}}></View>*/}
+                    <View style={{height: 500}}>
+                        <Text>
+                            That's All folks
+                        </Text>
+                    </View>
 
                 </ScrollView>
             </View>
@@ -184,15 +187,14 @@ export default class Explore extends Component {
 }
 
 const styles = StyleSheet.create({
-    map: {
-        height: 200
-    },
+
     place: {
         padding: 16,
         borderBottomWidth: 1,
         borderBottomColor: '#dddddd',
         backgroundColor: 'white',
         //alignItems : 'center',
+        height : 100,
         justifyContent: 'center',
         //zIndex : 1
     },
