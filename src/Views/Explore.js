@@ -91,14 +91,14 @@ export default class Explore extends Component {
     }
 
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                let myLocation = {latitude: position.coords.latitude, longitude: position.coords.longitude};
-                this.setState({myLocation});
-            },
-            (error) => alert(JSON.stringify(error)),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-        );
+        // navigator.geolocation.getCurrentPosition(
+        //     (position) => {
+        //         let myLocation = {latitude: position.coords.latitude, longitude: position.coords.longitude};
+        //         this.setState({myLocation});
+        //     },
+        //     (error) => alert(JSON.stringify(error)),
+        //     {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+        // );
     }
 
 

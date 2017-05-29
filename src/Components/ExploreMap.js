@@ -42,7 +42,7 @@ class ExploreMap extends Component {
 
             },
             (error) => alert(JSON.stringify(error)),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
         );
     }
 
@@ -83,6 +83,7 @@ class ExploreMap extends Component {
     render() {
         if (this.state.myLocation)
             return (
+                
                 <MapView
                     style={styles.map}
                     ref={ref => {
@@ -91,7 +92,7 @@ class ExploreMap extends Component {
                     initialRegion={{
                         latitude: this.state.myLocation.latitude,
                         longitude: this.state.myLocation.longitude,
-                        latitudeDelta: 0.01,
+                        latitudeDelta: 0.11,
                         longitudeDelta: 0.01,
                     }}
                 >
@@ -161,6 +162,6 @@ ExploreMap.propTypes = {
 
 const styles = StyleSheet.create({
     map: {
-        height: 200
+        height: 100
     },
 });
