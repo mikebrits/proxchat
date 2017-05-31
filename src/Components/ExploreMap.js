@@ -142,7 +142,7 @@ class ExploreMap extends Component {
                         <MapView.Circle
                             key={activePlace.location.latitude + activePlace.location.longitude}
                             center={activePlace.location}
-                            radius={300}
+                            radius={activePlace.radius}
                             fillColor={"rgba(5, 165, 209, 0.2)"}
                             strokeColor={"rgba(5, 165, 209, 0.5)"}
                             strokeWidth={1}

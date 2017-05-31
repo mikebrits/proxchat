@@ -11,19 +11,20 @@ import {
     Dimensions,
     KeyboardAvoidingView
 } from 'react-native';
+import PropTypes from 'prop-types'
 
 import Message from '../Components/Message';
 import MessageInput from '../Components/MessageContentInput';
 import InvertibleScrollView from 'react-native-invertible-scroll-view';
 
 
-export default class Chat extends Component {
+class Chat extends Component {
 
     static navigationOptions = ({navigation}) => ({
-        title: `Chat with ${navigation.state.params.chatID}`,
+        title: `${navigation.state.params.chat.title}`,
         headerRight: <Button title="Settings"
                              onPress={() => {
-                                 navigation.navigate('ChatOptions', {chatID: navigation.state.params.chatID})
+                                 navigation.navigate('ChatOptions', {chat: navigation.state.params.chat})
                              }}/>,
     });
 
@@ -79,9 +80,13 @@ export default class Chat extends Component {
     componentWillMount() {
 
         this.state = {
-            messages: this.messages,
+            messages: this.getMessages(),
             messageContents: {}
         }
+    }
+
+    getMessages(){
+        return this.messages;
     }
 
 
@@ -129,6 +134,12 @@ export default class Chat extends Component {
         );
     }
 }
+
+Chat.propTypes = {
+
+};
+
+export default Chat;
 
 const styles = StyleSheet.create({
     container: {

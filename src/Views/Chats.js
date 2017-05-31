@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 
-import Chat from '../Components/ChatComponent';
+import Chat from '../Components/ChatSelector';
 
 
 export default class Chats extends Component {
@@ -25,12 +25,34 @@ export default class Chats extends Component {
         {
             id : 123,
             title : "Some Chat Title",
-            thumbnail : "https://s3-eu-west-1.amazonaws.com/gastag/RefImages/Emails/John+Roche.jpg"
+            thumbnail : "https://s3-eu-west-1.amazonaws.com/gastag/RefImages/Emails/John+Roche.jpg",
+            active : true,
+            participants : [
+                {
+                    id : 123,
+                    name : 'John Wilkes Booth',
+                },
+                {
+                    id : 999,
+                    name : 'Mike Brits',
+                }
+            ]
         },
         {
             id : 345,
             title : "Another Chat Title",
-            thumbnail : "https://s3-eu-west-1.amazonaws.com/gastag/RefImages/Emails/John+Roche.jpg"
+            thumbnail : "https://s3-eu-west-1.amazonaws.com/gastag/RefImages/Emails/John+Roche.jpg",
+            active : false,
+            participants : [
+                {
+                    id : 111,
+                    name : 'Joe Joe Sampson',
+                },
+                {
+                    id : 999,
+                    name : 'Mike Brits',
+                }
+            ]
         },
 
     ]
@@ -40,18 +62,16 @@ export default class Chats extends Component {
             <ScrollView>
                 {_.map(this.chats, (chat, index) => {
                     return <Chat key={index}
-                                 id={chat.id}
-                                 title={chat.title}
-                                 thumbnail={chat.thumbnail}
-                                 onPress={() => this.navigateToChat(chat.id)}
+                                 chat={chat}
+                                 onPress={() => this.navigateToChat(chat)}
                             />;
                 })}
             </ScrollView>
         );
     }
 
-    navigateToChat = (chatID) => {
-        this.props.navigation.navigate('Chat', {chatID : chatID})
+    navigateToChat = (chat) => {
+        this.props.navigation.navigate('Chat', {chat : chat})
     }
 }
 

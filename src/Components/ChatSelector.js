@@ -15,16 +15,16 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-const ChatComponent = (props) => {
+const ChatSelector = (props) => {
 
     return (
         <TouchableWithoutFeedback onPress={props.onPress}>
             <View style={styles.container}>
                 <View style={styles.leftHandContents}>
-                <Image style={styles.thumbnail} source={{uri: "https://s3-eu-west-1.amazonaws.com/gastag/RefImages/Emails/John+Roche.jpg"}} />
+                <Image style={styles.thumbnail} source={{uri: props.chat.thumbnail || "https://s3-eu-west-1.amazonaws.com/gastag/RefImages/Emails/John+Roche.jpg"}} />
                     <View>
                         <Text style={styles.chatTitle}>
-                            {props.title}
+                            {props.chat.title}
                         </Text>
                         <Text style={styles.chatSubTitle}>
                             Some other Information
@@ -38,13 +38,23 @@ const ChatComponent = (props) => {
 
 }
 
-ChatComponent.propTypes = {
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
+ChatSelector.propTypes = {
+    chat: PropTypes.shape(
+        {
+            id : PropTypes.number.isRequired,
+            title : PropTypes.string,
+            active : PropTypes.bool.isRequired,
+            thumbnail : PropTypes.string,
+            participants : PropTypes.arrayOf(PropTypes.shape({
+                id : PropTypes.number,
+                name : PropTypes.string,
+            }))
+        }
+    ).isRequired,
     onPress: PropTypes.func
 };
 
-export default ChatComponent;
+export default ChatSelector;
 
 const styles = StyleSheet.create({
     container : {

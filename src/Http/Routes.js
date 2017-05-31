@@ -9,6 +9,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 
 export const Tabs = TabNavigator({
+    Settings: {
+        screen: Settings,
+        navigationOptions : {
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-finger-print-outline" size={25} color={tintColor}  />
+            ),
+        }
+    },
     Explore: {
         screen: Explore,
         navigationOptions : {
@@ -22,14 +30,6 @@ export const Tabs = TabNavigator({
         navigationOptions : {
             tabBarIcon: ({ tintColor }) => (
                 <Icon name="ios-chatbubbles-outline" size={25} color={tintColor} />
-            ),
-        }
-    },
-    Settings: {
-        screen: Settings,
-        navigationOptions : {
-            tabBarIcon: ({ tintColor }) => (
-                <Icon name="ios-finger-print-outline" size={25} color={tintColor}  />
             ),
         }
     },

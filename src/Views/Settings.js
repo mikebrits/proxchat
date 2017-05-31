@@ -3,24 +3,64 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
     Text
 } from 'react-native';
+import {gql, graphql} from 'react-apollo';
+import _ from 'lodash';
 
-export default class Chats extends Component {
+const getUsers = gql`
+query CurrentUser($userID: ID){ 
+    users(id : $userID) {
+        name
+        id 
+    }
+    chats {
+        chat_type{
+            chat_type
+        }
+    }
+}
+`;
+
+
+@graphql(getUsers, {options : ({userID}) => ({variables : {userID}})})
+class Settings extends Component {
     render() {
-        return (
-            <View>
-                <Text>
-                    Settings
-                </Text>
-            </View>
-        );
+        console.log(this.props.data);
+        const {data} = this.props;
+        return data.loading ?
+            (
+                <View>
+                    <Text>
+                       Loading...
+                    </Text>
+                </View>
+            )
+            :
+            (
+                <View>
+                    {
+                        _.map(data.users, (item, index) => {
+                            return(
+                                <Text key={index}>
+                                    {item.id}: {item.name}
+                                </Text>
+                            );
+                        })
+                    }
+                </View>
+            )
     }
 }
 
-const styles = StyleSheet.create({
-});
+Settings.defaultProps = {
+    userID : 2
+};
+
+export default Settings;
+
+const styles = StyleSheet.create({});
