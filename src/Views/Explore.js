@@ -25,7 +25,7 @@ export default class Explore extends Component {
         {
             id: 123,
             name: 'The Lodge',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
@@ -45,7 +45,7 @@ export default class Explore extends Component {
         {
             id: 124,
             name: 'Maccies',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
@@ -64,7 +64,7 @@ export default class Explore extends Component {
         {
             id: 125,
             name: 'Sefton Park',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
@@ -83,7 +83,7 @@ export default class Explore extends Component {
         {
             id: 126,
             name: 'Elevator',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
@@ -102,7 +102,7 @@ export default class Explore extends Component {
         {
             id: 127,
             name: 'The Quarter',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
@@ -121,7 +121,7 @@ export default class Explore extends Component {
         {
             id: 128,
             name: 'Otterspool Prom',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
@@ -140,7 +140,7 @@ export default class Explore extends Component {
         {
             id: 129,
             name: 'St Michael\'s',
-            thumbnail : 'https://unsplash.it/300/300/?random',
+            //thumbnail : 'https://unsplash.it/300/300/?random',
             host : {
                 id : 0,
                 name : 'King Flippy Nips'
